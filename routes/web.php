@@ -24,3 +24,4 @@ Route::post('auth/signup', [SignupController::class, 'store'])->name('register.p
 Route::post('/', [LoginController::class, 'login'])->name('login.post');
 
 Route::get('verification/verification', [VerificationController::class, 'index'])->name('verification');
+Route::post('verification/verification', [VerificationController::class, 'verify'])->name('verify.post');
