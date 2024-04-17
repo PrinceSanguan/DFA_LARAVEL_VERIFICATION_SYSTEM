@@ -18,15 +18,17 @@ class SignupController extends Controller
             'name' => 'required',
             'username' => 'required|unique:users',
             'password' => 'required|confirmed',
+            'usertype' => 'required|in:verifier,processor,supervisor,programmer',
         ]);
-
+    
         // Create the user
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'password' => bcrypt($request->password),
+            'usertype' => $request->usertype,
         ]);
-
+    
         // Redirect to login page or wherever you want
         return redirect()->route('welcome');
     }

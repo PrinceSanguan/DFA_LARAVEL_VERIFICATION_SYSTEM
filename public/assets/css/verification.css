@@ -41,13 +41,18 @@ label {
 }
 
 button {
-    padding: 15px 25px; /* Adjust the padding as needed to make it larger */
-    font-size: 24px; /* Increase font size if desired */
-    border: none;
-    background-color: #007bff; /* Change button color as desired */
+    padding: 10px 20px; /* Increased padding for a larger button */
+    font-size: 20px; /* Slightly reduced font size for better proportion */
+    border: 2px solid #007bff; /* Adding a subtle border for better contrast */
+    background-color: #007bff; /* Button color */
     color: #fff; /* Text color */
-    border-radius: 5px;
+    border-radius: 8px; /* Rounded corners for a softer look */
     cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover for visual feedback */
 }
 
 /* This Style is for the Header */

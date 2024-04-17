@@ -16,6 +16,16 @@
   <div class="floating-element">
     <p>Welcome, {{$name}}</p>
   </div>
+
+  <div class="floating-element" style="position: fixed; top: 70px; right: 20px; z-index: 1000;">
+    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="text-decoration: none; color: #faf7f7; padding: 5px 10px; border-radius: 1px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+      <i class="fas fa-sign-out-alt"></i> Sign out
+    </a>
+  </div>
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+  </form>
   
   <div class="container">
 
@@ -65,23 +75,38 @@
       @csrf
      <input type="text" name="appointmentCode" autofocus required><br>
       <label>Application Number</label>
-      <button type="submit">Submit</button>
+      <button type="submit" onclick="printPage()">Submit</button>
     </form>
   </div>
 
   <script>
 
-    // JavaScript to change the text color every 2 seconds
-const appNumber = document.getElementById("appNumbers"); // Updated variable name
-const colors = ["red", "blue", "orange", "green", "yellow"];
-let colorIndex = 0;
-
-function changeColor() {
-  appNumber.style.color = colors[colorIndex]; // Updated variable name
-  colorIndex = (colorIndex + 1) % colors.length;
+// For Printing
+function printPage() {
+    // Specify the URL of your PDF file
+    var pdfUrl = "{{ asset('assets/pdfNumbers/Diploma.pdf') }}";
+    
+    // Create a hidden iframe element
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    
+    // Set the source of the iframe to the PDF URL
+    iframe.src = pdfUrl;
+    
+    // Append the iframe to the document body
+    document.body.appendChild(iframe);
+    
+    // Print the content of the iframe
+    iframe.onload = function() {
+        // Trigger the print dialog
+        iframe.contentWindow.print();
+        
+        // Remove the iframe after printing (adjust timeout as needed)
+        setTimeout(function() {
+            document.body.removeChild(iframe);
+        }, 1000); // Adjust the timeout value as needed
+    };
 }
-
-setInterval(changeColor, 2000); // Change color every 2 seconds
 
   </script>
 

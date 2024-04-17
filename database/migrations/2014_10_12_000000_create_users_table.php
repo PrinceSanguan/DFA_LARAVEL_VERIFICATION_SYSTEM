@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
+            $table->enum('usertype', ['verifier', 'processor', 'supervisor', 'programmer'])->nullable();
             $table->string('password');
             $table->timestamps();
         });

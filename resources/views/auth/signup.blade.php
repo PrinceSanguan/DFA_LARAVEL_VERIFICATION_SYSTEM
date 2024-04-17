@@ -26,6 +26,15 @@
             <input type="password" id="password_confirmation" name="password_confirmation" required>
         </div>
         <div>
+            <label for="usertype">User Type:</label>
+            <select id="usertype" name="usertype" required>
+                <option value="verifier">Verifier</option>
+                <option value="processor">Processor</option>
+                <option value="supervisor">Supervisor</option>
+                <option value="programmer">Programmer</option>
+            </select>
+        </div>
+        <div>
             <button type="submit">Register</button>
         </div>
     </form>
